@@ -35,7 +35,7 @@ func main() {
 	var bind string
 	flag.StringVar(&bind, "bind", "0.0.0.0", "address to bind the proxy server to")
 	var port string
-	flag.StringVar(&port, "port", "8888", "proxy port to listen on")
+	flag.StringVar(&port, "port", "8889", "proxy port to listen on")
 	var socks5 string
 	flag.StringVar(&socks5, "socks5", "", "SOCKS5 proxy for tunneling, not used if not provided")
 	var socks5Auth string
@@ -114,7 +114,7 @@ func main() {
 	}
 
 	if protocol == httpProtocol {
-		glog.V(0).Infoln("Starting HTTP proxy...")
+		glog.V(0).Infof("Starting HTTP proxy on port %s...\n", port)
 		if socks5 != "" {
 			glog.V(0).Infof("Tunneling HTTP requests to SOCKS5 proxy: %s\n", socks5)
 		}
